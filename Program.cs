@@ -176,9 +176,9 @@ class Program
 		}
 
 		Console.WriteLine("True");
-		Log.Information("Успешная регистрация: Дата-время запроса: {DateTime}," +
-			" Логин: {Login}," +
-			" Пароль: {MaskedPassword}," +
+		Log.Information("Успешная регистрация: Дата-время запроса: {DateTime},\n" +
+			" Логин: {Login},\n" +
+			" Пароль: {MaskedPassword},\n" +
 			" Подтверждение пароля: {MaskedConfPassword}", DateTime.Now, login, MaskPassword(password), MaskPassword(passwordTwo));
 		
 		string registrationInfo = $"{login}";
