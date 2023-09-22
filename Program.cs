@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text.RegularExpressions;
 using Serilog;
@@ -108,6 +108,7 @@ class Program
 		bool isPasswordMatch = CheckPasswordMatch(password, passwordTwo);
 		if (!isPasswordMatch)
 		{
+			Console.WriteLine("False");
 			Log.Information("Пароли не совпадают: Дата-время запроса: {DateTime},\n" +
 			" Логин: {Login},\n" +
 			" Пароль: {MaskedPassword},\n" +
@@ -120,7 +121,7 @@ class Program
 		bool isValidLength = ValidatePasswordLength(password);
 		if (!isValidLength)
 		{
-
+			Console.WriteLine("False");
 			Log.Information("Длина пароля должна быть не менее 7 символов: Дата-время запроса: {DateTime},\n" +
 			" Логин: {Login},\n" +
 			" Пароль: {MaskedPassword},\n" +
@@ -131,7 +132,7 @@ class Program
 		bool isValidCyrillic = ValidateCyrillic(password);
 		if (!isValidCyrillic)
 		{
-
+			Console.WriteLine("False");
 			Log.Information("Пароль должен содержать только символы кириллицы: Дата-время запроса: {DateTime},\n" +
 			" Логин: {Login},\n" +
 			" Пароль: {MaskedPassword},\n" +
@@ -144,6 +145,7 @@ class Program
 
 		if (!hasUppercase || !hasLowercase)
 		{
+			Console.WriteLine("False");
 			Log.Information("Пароль должен содержать символы верхнего и нижнего регистра: Дата-время запроса: {DateTime},\n" +
 			" Логин: {Login},\n" +
 			" Пароль: {MaskedPassword},\n" +
@@ -154,6 +156,7 @@ class Program
 		bool hasDigits = ContainsDigits(password);
 		if (!hasDigits)
 		{
+			Console.WriteLine("False");
 			Log.Information("Пароль должен содержать цифры: Дата-время запроса: {DateTime},\n" +
 			" Логин: {Login},\n" +
 			" Пароль: {MaskedPassword},\n" +
@@ -164,6 +167,7 @@ class Program
 		bool hasSpecialCharacters = ContainsSpecialCharacters(password);
 		if (!hasSpecialCharacters)
 		{
+			Console.WriteLine("False");
 			Log.Information("Пароль должен содержать спецсимволы: Дата-время запроса: {DateTime},\n" +
 			" Логин: {Login},\n" +
 			" Пароль: {MaskedPassword},\n" +
@@ -171,7 +175,7 @@ class Program
 			return;
 		}
 
-		
+		Console.WriteLine("True");
 		Log.Information("Успешная регистрация: Дата-время запроса: {DateTime}," +
 			" Логин: {Login}," +
 			" Пароль: {MaskedPassword}," +
@@ -239,6 +243,7 @@ class Program
 
 		if (loginExists)
 		{
+			Console.WriteLine("False");
 			Log.Information("Логин уже существует: Дата-время запроса: {DateTime},\n" +
 			" Логин: {Login},\n" +
 			" Пароль: {MaskedPassword},\n" +
@@ -249,6 +254,7 @@ class Program
 		bool isValidLength = ValidateLength(login);
 		if (!isValidLength)
 		{
+			Console.WriteLine("False");
 			Log.Information("Логин должен содержать не менее 5 символов: Дата-время запроса: {DateTime},\n" +
 			" Логин: {Login},\n" +
 			" Пароль: {MaskedPassword},\n" +
@@ -259,6 +265,7 @@ class Program
 		bool isValidCyrillic = ValidateCyrillic(login);
 		if (isValidCyrillic)
 		{
+			Console.WriteLine("False");
 			Log.Information("Логин должен содержать только символы латиницы: Дата-время запроса: {DateTime},\n" +
 			" Логин: {Login},\n" +
 			" Пароль: {MaskedPassword},\n" +
@@ -269,6 +276,7 @@ class Program
 		bool isValidCharacters = ValidateCharacters(login);
 		if (!isValidCharacters)
 		{
+			Console.WriteLine("False");
 			Log.Information("Логин содержит недопустимые символы: Дата-время запроса: {DateTime},\n" +
 			" Логин: {Login},\n" +
 			" Пароль: {MaskedPassword},\n" +
@@ -308,6 +316,7 @@ class Program
 
 		if (loginExists)
 		{
+			Console.WriteLine("False");
 			Log.Information("Номер телефона уже существует: Дата-время запроса: {DateTime},\n" +
 			" Логин: {Login},\n" +
 			" Пароль: {MaskedPassword},\n" +
@@ -318,6 +327,7 @@ class Program
 		bool isValidatePhone = ValidatePhoneNumber(login);
 		if (!isValidatePhone)
 		{
+			Console.WriteLine("False");
 			Log.Information("Не соответсвует шаблону номера телефона (+7-xxx-xxx-xxxx): Дата-время запроса: {DateTime},\n" +
 			" Логин: {Login},\n" +
 			" Пароль: {MaskedPassword},\n" +
@@ -349,6 +359,7 @@ class Program
 
 		if (loginExists)
 		{
+			Console.WriteLine("False");
 			Log.Information("Электронная почта уже существует: Дата-время запроса: {DateTime},\n" +
 			" Логин: {Login},\n" +
 			" Пароль: {MaskedPassword},\n" +
@@ -360,6 +371,7 @@ class Program
 		if (!isValidateEmail)
 		{
 
+			Console.WriteLine("False");
 			Log.Information("Не соответсвует шаблону электронной почты (xxx@xxx.xxx): Дата-время запроса: {DateTime},\n" +
 			" Логин: {Login},\n" +
 			" Пароль: {MaskedPassword},\n" +
